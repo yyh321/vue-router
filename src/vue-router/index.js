@@ -7,6 +7,8 @@ class VueRouter {
     this.matcher = creatMatcher(options.routes || [])
     // 创建路由,并且将router传到路由里面
     this.history = new HashHistory(this)
+
+    this.beforeEachs = []
   }
 
   init(app) {
@@ -29,6 +31,10 @@ class VueRouter {
 
   match(location) {
     return this.matcher.match(location)
+  }
+
+  beforeEach(cb) {
+    this.beforeEachs.push(cb)
   }
 }
 
